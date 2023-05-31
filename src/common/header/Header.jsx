@@ -7,6 +7,8 @@ import CategoryMenu from "./CategoryMenu";
 
 const Header = ({ CartItem }) => {
   const [searchText, setSearchText] = useState("");
+  const [login, setLogin] = useState(false);
+
   const history = useHistory();
   
   const handleSearch = (event) => {
@@ -74,7 +76,7 @@ const Header = ({ CartItem }) => {
                   </Link>
                 </div>
                 <div>
-                  <Link className="d-flex aling-items-center gap-10 text-white">
+                  <Link to={login ? '/': '/login'} className="d-flex aling-items-center gap-10 text-white">
                     <i className="fa fa-user icon-circle fa-2x"></i>
                     <p className="mb-0">
                       Mi cuenta

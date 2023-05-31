@@ -1,13 +1,17 @@
 import React from "react"
 import "./Home.css"
 import SliderHome from "./Slider"
+import FlashDeals from "../HomeBody/FlashDeals"
 
-const Home = () => {
+const Home = ({productItems, addToCart}) => {
   return (
     <>
       <section className='home'>
-        <div className='containere d_flexz'>
+        <div className='containere d_flexz difuminado'>
           <SliderHome />
+        </div>
+        <div>
+          <FlashDeals addToCart={addToCart} productItems={productItems} />
         </div>
       </section>
     </>

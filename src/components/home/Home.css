@@ -27,3 +27,9 @@
   left: 0;
   margin: auto;
 }
+.difuminado {
+  background-image: linear-gradient(to right, transparent, #000);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+}

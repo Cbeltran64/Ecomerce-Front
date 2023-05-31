@@ -8,9 +8,11 @@ import Signup from "./components/account/SignUp.jsx";
 import Cart from "./components/cark/Cart.jsx";
 import Home from "./components/home/Home.jsx";
 import ProductForm from "./components/product/ProductForm.jsx";
+import Data from "./components/Data"
 
 function App() {
   const [CartItem, setCartItem] = useState([]);
+  const { productItems } = Data
 
   const addToCart = (product) => {
     const productExit = CartItem.find((item) => item.id === product.id);
@@ -49,7 +51,7 @@ function App() {
         <Header CartItem={CartItem} />
         <Switch>
           <Route path="/" exact>
-            <Home CartItem={CartItem} />
+            <Home addToCart={addToCart} productItems={productItems} />
           </Route>
           <Route path="/cark" exact>
             <Cart
