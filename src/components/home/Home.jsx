@@ -11,7 +11,7 @@ const Home = ({productItems, addToCart}) => {
           <SliderHome />
         </div>
         <div>
-          <FlashDeals addToCart={addToCart} productItems={productItems} />
+          
         </div>
       </section>
     </>

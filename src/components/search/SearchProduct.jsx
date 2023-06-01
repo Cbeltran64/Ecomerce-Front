@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./SearchProduct.css";
 import { Link } from "react-router-dom";
-import Productos from "./ProductSearch.jsx";
 
 const SearchProduct = ({ addToCart }) => {
   const { search } = useParams();
@@ -25,38 +24,37 @@ const SearchProduct = ({ addToCart }) => {
   }, [search]);
 
   return (
-    <>
-      <div className="search-product">
-        <div className="container">
-          <div className="search-product-box">
-            <Productos productos={products} />
-            <h1>Resultado de busquedad de "{search}"</h1>
-            <ul>
-              {products.map((product) => (
-                <li key={product.id} className="product">
+    <div className="search-product">
+      <div className="container">
+        <div className="search-product-box">
+          <h1>Resultado de búsqueda de "{search}"</h1>
+          <ul className="product-list">
+            {products.map((product) => (
+              <li key={product.id} className="product">
+                <div className="product-image-container">
+                  <img src={product.imageUrl} alt={product.name} className="product-image" />
+                </div>
+                <div className="product-info">
                   <Link to={{
                     pathname: `/product/${product.id}`,
                     state: { product: product }
                   }}>
-                    <img src={`../images/shops/${product.imageUrl}`} alt={product.name} className="product-image" />
-                    <div className="product-info">
-                      <h2>{product.name}</h2>
-                      <p>{product.description}</p>
-                      <div>
-                        <p>Precio: ${product.price}</p>
-                      </div>
+                    <h2 className="product-name">{product.name}</h2>
+                    <p className="product-description">{product.description}</p>
+                    <div className="product-details">
+                      <p className="product-price">Precio: ${product.price}</p>
                     </div>
                   </Link>
-                  <button onClick={() => addToCart(product)}>
-                    <i className='fa fa-plus'></i>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+                </div>
+                <button className="btn btn-primary" onClick={() => addToCart(product)}>
+                  <i className="fa fa-plus"></i>
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
